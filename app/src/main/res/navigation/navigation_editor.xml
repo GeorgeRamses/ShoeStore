@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_editor" app:startDestination="@id/login">
+
+    <fragment android:id="@+id/login" android:name="com.example.shoestore.Login" android:label="Login">
+        <action android:id="@+id/action_login_to_welcomeScreen" app:destination="@id/welcomeScreen"/>
+    </fragment>
+    <fragment android:id="@+id/welcomeScreen" android:name="com.example.shoestore.WelcomeScreen"
+              android:label="fragment_welcome_screen" tools:layout="@layout/fragment_welcome_screen">
+        <argument android:name="user" app:argType="string"/>
+        <argument android:name="password" app:argType="string"/>
+    </fragment>
+</navigation>
