@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".WelcomeScreen">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:id="@+id/tv_welcome"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            tools:context=".WelcomeScreen" android:id="@+id/frameLayout2"
+            android:background="@drawable/welcom_background">
 
-</FrameLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+                android:id="@+id/tv_the"
+                android:text="@string/the"
+                android:fontFamily="@font/akronim"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.58000004" style="@style/welcom_style" android:textSize="34sp"/>
+        <TextView
+                android:text="@string/awesome"
+                android:id="@+id/tv_awesome" style="@style/welcom_style"
+                app:layout_constraintTop_toBottomOf="@id/tv_the"
+                app:layout_constraintBottom_toTopOf="@id/tv_branded"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content" android:textSize="34sp"
+                app:layout_constraintVertical_bias="0.31"/>
+        <TextView
+                android:text="@string/branded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_branded" style="@style/welcom_style"
+                app:layout_constraintTop_toBottomOf="@id/tv_awesome"
+                app:layout_constraintBottom_toTopOf="@+id/tv_shoes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:fontFamily="@font/roboto"
+                android:textSize="34sp"
+                app:layout_constraintHorizontal_bias="0.5"/>
+        <TextView
+                android:text="@string/shoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_shoes" style="@style/welcom_style"
+                android:fontFamily="@font/akronim"
+                app:layout_constraintTop_toBottomOf="@id/tv_branded"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_start"
+                app:layout_constraintEnd_toEndOf="parent" android:textSize="34sp"
+                app:layout_constraintHorizontal_bias="0.5"/>
+        <Button
+                android:text="@string/get_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/btn_start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_shoes"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
