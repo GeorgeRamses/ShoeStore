@@ -10,5 +10,8 @@
               android:label="fragment_welcome_screen" tools:layout="@layout/fragment_welcome_screen">
         <argument android:name="user" app:argType="string"/>
         <argument android:name="password" app:argType="string"/>
+        <action android:id="@+id/action_welcomeScreen_to_instruction" app:destination="@id/instruction"/>
     </fragment>
+    <fragment android:id="@+id/instruction" android:name="com.example.shoestore.instruction"
+              android:label="fragment_instruction" tools:layout="@layout/fragment_instruction"/>
 </navigation>

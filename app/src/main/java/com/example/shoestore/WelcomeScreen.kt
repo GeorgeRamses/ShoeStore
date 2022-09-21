@@ -19,12 +19,15 @@ class WelcomeScreen : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding =
-            DataBindingUtil.inflate<FragmentWelcomeScreenBinding>(inflater, R.layout.fragment_welcome_screen, container, false)
-
-        val args = WelcomeScreenArgs.fromBundle(requireArguments())
-        val user = args.user
-        val password = args.password
-        binding.tvWelcome.text = "Hello Mr. $user. your password is $password"
+            DataBindingUtil.inflate<FragmentWelcomeScreenBinding>(
+                inflater,
+                R.layout.fragment_welcome_screen,
+                container,
+                false
+            )
+        binding.btnStart.setOnClickListener { view ->
+            view.findNavController().navigate(WelcomeScreenDirections.actionWelcomeScreenToInstruction())
+        }
 
         return binding.root
     }
