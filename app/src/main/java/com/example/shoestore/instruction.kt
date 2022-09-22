@@ -27,7 +27,7 @@ class instruction : Fragment() {
             false
         )
         binding.btnShoelist.setOnClickListener { view ->
-            view.findNavController().navigate(instructionDirections.actionInstructionToShoelist())
+            view.findNavController().navigate(instructionDirections.actionInstructionToShoelist("","","","",false))
         }
         // Inflate the layout for this fragment
         return binding.root

@@ -4,24 +4,33 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_editor" app:startDestination="@id/login">
 
     <fragment android:id="@+id/login" android:name="com.example.shoestore.Login" android:label="Login">
-        <action android:id="@+id/action_login_to_welcomeScreen" app:destination="@id/welcomeScreen"/>
+        <action android:id="@+id/action_login_to_welcomeScreen" app:destination="@id/welcomeScreen"
+                app:popUpTo="@id/login" app:launchSingleTop="true" app:popUpToInclusive="true"/>
     </fragment>
     <fragment android:id="@+id/welcomeScreen" android:name="com.example.shoestore.WelcomeScreen"
               android:label="fragment_welcome_screen" tools:layout="@layout/fragment_welcome_screen">
         <argument android:name="user" app:argType="string"/>
         <argument android:name="password" app:argType="string"/>
-        <action android:id="@+id/action_welcomeScreen_to_instruction" app:destination="@id/instruction"/>
+        <action android:id="@+id/action_welcomeScreen_to_instruction" app:destination="@id/instruction"
+        />
     </fragment>
     <fragment android:id="@+id/instruction" android:name="com.example.shoestore.instruction"
               android:label="fragment_instruction" tools:layout="@layout/fragment_instruction">
         <action android:id="@+id/action_instruction_to_shoelist" app:destination="@id/shoelist"/>
     </fragment>
     <fragment android:id="@+id/shoelist" android:name="com.example.shoestore.shoelist" android:label="shoelist">
-        <action android:id="@+id/action_shoelist_to_shoe_detail" app:destination="@id/shoe_detail"/>
+        <action android:id="@+id/action_shoelist_to_shoe_detail" app:destination="@id/shoe_detail"
+        />
         <action android:id="@+id/action_shoelist_to_login" app:destination="@id/login"/>
+        <argument android:name="shoeName" app:argType="string"/>
+        <argument android:name="company" app:argType="string"/>
+        <argument android:name="size" app:argType="string"/>
+        <argument android:name="desc" app:argType="string"/>
+        <argument android:name="saveData" app:argType="boolean"/>
     </fragment>
     <fragment android:id="@+id/shoe_detail" android:name="com.example.shoestore.shoe_detail"
               android:label="shoe_detail">
-        <action android:id="@+id/action_shoe_detail_to_shoelist" app:destination="@id/shoelist"/>
+        <action android:id="@+id/action_shoe_detail_to_shoelist" app:destination="@id/shoelist"
+                app:popUpTo="@id/instruction" app:popUpToInclusive="false"/>
     </fragment>
 </navigation>

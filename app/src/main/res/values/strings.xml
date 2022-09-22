@@ -27,4 +27,5 @@
     <string name="company_lable">Company</string>
     <string name="enter_company">Enter Company</string>
     <string name="shoe_namelable">Shoe Name</string>
+    <string name="cancel">Cancel</string>
 </resources>

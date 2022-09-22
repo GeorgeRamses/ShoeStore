@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.shoestore.databinding.FragmentLoginBinding
 import com.example.shoestore.databinding.FragmentWelcomeScreenBinding
 
 class WelcomeScreen : Fragment() {
-
+    lateinit var viewModel: ShoeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
+
         val binding =
             DataBindingUtil.inflate<FragmentWelcomeScreenBinding>(
                 inflater,
