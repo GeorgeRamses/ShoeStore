@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".Login" android:id="@+id/frameLayout">
+            tools:context=".Login" android:id="@+id/login_layout" android:background="@drawable/welcom_background">
 
         <!-- TODO: Update blank fragment layout -->
         <EditText

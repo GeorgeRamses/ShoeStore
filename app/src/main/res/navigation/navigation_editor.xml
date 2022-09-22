@@ -13,5 +13,15 @@
         <action android:id="@+id/action_welcomeScreen_to_instruction" app:destination="@id/instruction"/>
     </fragment>
     <fragment android:id="@+id/instruction" android:name="com.example.shoestore.instruction"
-              android:label="fragment_instruction" tools:layout="@layout/fragment_instruction"/>
+              android:label="fragment_instruction" tools:layout="@layout/fragment_instruction">
+        <action android:id="@+id/action_instruction_to_shoelist" app:destination="@id/shoelist"/>
+    </fragment>
+    <fragment android:id="@+id/shoelist" android:name="com.example.shoestore.shoelist" android:label="shoelist">
+        <action android:id="@+id/action_shoelist_to_shoe_detail" app:destination="@id/shoe_detail"/>
+        <action android:id="@+id/action_shoelist_to_login" app:destination="@id/login"/>
+    </fragment>
+    <fragment android:id="@+id/shoe_detail" android:name="com.example.shoestore.shoe_detail"
+              android:label="shoe_detail">
+        <action android:id="@+id/action_shoe_detail_to_shoelist" app:destination="@id/shoelist"/>
+    </fragment>
 </navigation>
