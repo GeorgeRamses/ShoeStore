@@ -46,6 +46,7 @@ class shoelist : Fragment() {
         })
 
         binding.floatingActionButtonAdd.setOnClickListener { view ->
+            viewModel.resetValues()
             view.findNavController().navigate(shoelistDirections.actionShoelistToShoeDetail())
         }
 

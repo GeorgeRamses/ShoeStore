@@ -16,7 +16,7 @@ import com.example.shoestore.databinding.FragmentShoeDetailBinding
 
 class shoe_detail : Fragment() {
     lateinit var binding: FragmentShoeDetailBinding
-   private val viewModel: ShoeViewModel by activityViewModels()
+    private val viewModel: ShoeViewModel by activityViewModels()
     var name = ""
     var company = ""
     var size = ""
@@ -38,9 +38,11 @@ class shoe_detail : Fragment() {
         binding.lifecycleOwner = this
 
         binding.btnSave.setOnClickListener { view ->
-
             viewModel.addShoe()
-
+            view.findNavController()
+                .navigate(shoe_detailDirections.actionShoeDetailToShoelist())
+        }
+        binding.btnCancel.setOnClickListener { view ->
             view.findNavController()
                 .navigate(shoe_detailDirections.actionShoeDetailToShoelist())
         }

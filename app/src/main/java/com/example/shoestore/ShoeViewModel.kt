@@ -26,6 +26,12 @@ class ShoeViewModel : ViewModel() {
     var size = MutableLiveData<String>()
     var description = MutableLiveData<String>()
 
+    fun resetValues() {
+        shoeName.value = ""
+        company.value = ""
+        size.value = ""
+        description.value = ""
+    }
 
     fun addShoe() {
         val newShoe = MyShoe(shoeName.value!!, company.value!!, size.value!!, description.value!!)
