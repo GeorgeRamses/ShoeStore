@@ -12,42 +12,43 @@ import android.widget.Toast
 import androidx.core.view.forEach
 import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.shoestore.databinding.FragmentShoelistBinding
 import java.awt.font.TextAttribute
+import kotlin.reflect.KProperty
 
 
 class shoelist : Fragment() {
-    lateinit var viewModel: ShoeViewModel
+    private val viewModel: ShoeViewModel by activityViewModels()
     lateinit var binding: FragmentShoelistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    @SuppressLint("FragmentLiveDataObserve")
+    @SuppressLint("FragmentLiveDataObserve", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding =
             DataBindingUtil.inflate<FragmentShoelistBinding>(inflater, R.layout.fragment_shoelist, container, false)
-        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
+        binding.viewModel = ShoeViewModel()
+        binding.lifecycleOwner = this
 
-        viewModel.shoe.observe(this, Observer { newShoe ->
-            loadShoeList(this.requireContext(), newShoe)
+        viewModel.shoeList.observe(this, Observer { newShoe ->
+            loadShoeList(newShoe)
         })
+
         binding.floatingActionButtonAdd.setOnClickListener { view ->
             view.findNavController().navigate(shoelistDirections.actionShoelistToShoeDetail())
         }
-        val args = shoelistArgs.fromBundle(requireArguments())
-        if (args.saveData) {
-            val newShoe = MyShoe(args.shoeName, args.company, args.size, args.desc)
-            viewModel.addShoe(newShoe)
-        }
+
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         return binding.root
@@ -65,8 +66,9 @@ class shoelist : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun loadShoeList(context: Context, my_Shoe: MutableList<MyShoe>) {
-        my_Shoe.forEach { myshoe ->
+    @SuppressLint("SetTextI18n")
+    fun loadShoeList(myShoeList: MutableList<MyShoe>) {
+        myShoeList.forEach { myshoe ->
             val textView = TextView(context)
             textView.text =
                 "shoe Name: ${myshoe.name}| company: ${myshoe.company}| " +

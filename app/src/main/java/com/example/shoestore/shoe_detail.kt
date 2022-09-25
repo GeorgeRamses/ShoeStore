@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -15,7 +16,7 @@ import com.example.shoestore.databinding.FragmentShoeDetailBinding
 
 class shoe_detail : Fragment() {
     lateinit var binding: FragmentShoeDetailBinding
-    lateinit var viewModel: ShoeViewModel
+   private val viewModel: ShoeViewModel by activityViewModels()
     var name = ""
     var company = ""
     var size = ""
@@ -31,19 +32,17 @@ class shoe_detail : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
+//        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.btnSave.setOnClickListener { view ->
-            name = binding.txtShoeName.text.toString()
-            company = binding.txtCompany.text.toString()
-            size = binding.txtSize.text.toString()
-            desc = binding.txtDesc.text.toString()
+
+            viewModel.addShoe()
 
             view.findNavController()
-                .navigate(shoe_detailDirections.actionShoeDetailToShoelist(name, company, size, desc,true))
-        }
-
-        binding.btnCancel.setOnClickListener { view ->
-            view.findNavController().navigate(shoe_detailDirections.actionShoeDetailToShoelist("","","","",false))
+                .navigate(shoe_detailDirections.actionShoeDetailToShoelist())
         }
 
 

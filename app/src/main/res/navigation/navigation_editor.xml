@@ -22,11 +22,6 @@
         <action android:id="@+id/action_shoelist_to_shoe_detail" app:destination="@id/shoe_detail"
         />
         <action android:id="@+id/action_shoelist_to_login" app:destination="@id/login"/>
-        <argument android:name="shoeName" app:argType="string"/>
-        <argument android:name="company" app:argType="string"/>
-        <argument android:name="size" app:argType="string"/>
-        <argument android:name="desc" app:argType="string"/>
-        <argument android:name="saveData" app:argType="boolean"/>
     </fragment>
     <fragment android:id="@+id/shoe_detail" android:name="com.example.shoestore.shoe_detail"
               android:label="shoe_detail">
