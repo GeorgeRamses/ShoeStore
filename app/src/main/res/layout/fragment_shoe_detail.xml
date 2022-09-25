@@ -6,7 +6,7 @@
        <variable name="viewModel" type="com.example.shoestore.ShoeViewModel"/>
    </data>
 
-    <!--    here i use constraintlayout besause it's flexibility and i can manage view easily-->
+    <!--    here I used constraint layout because it's flexibility and I can manage view easily-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
