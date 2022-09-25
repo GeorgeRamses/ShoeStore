@@ -5,18 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ShoeViewModel : ViewModel() {
-    private val _login = MutableLiveData<Boolean>()
-    val login: LiveData<Boolean>
-        get() = _login
 
     init {
-        _login.value = false
-        resetData()
     }
 
-    fun logingin() {
-        _login.value = true
-    }
 
     private val startshoeList = mutableListOf<MyShoe>(
         MyShoe("Brogue", "Vans", "41", "classic"),
@@ -40,12 +32,6 @@ class ShoeViewModel : ViewModel() {
         _shoeList.value!!.add(newShoe)
     }
 
-    fun resetData() {
-        shoeName.value = ""
-        company.value = ""
-        size.value = ""
-        description.value = ""
-    }
 
     override fun onCleared() {
         super.onCleared()

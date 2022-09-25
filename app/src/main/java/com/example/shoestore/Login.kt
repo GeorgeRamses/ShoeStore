@@ -24,7 +24,7 @@ class Login : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater, R.layout.fragment_login, container, false)
         viewModel=ViewModelProvider(this).get(ShoeViewModel::class.java)
-        viewModel.logingin()
+
         binding.btnLogin.setOnClickListener { view ->
             val user = binding.txtEmail.text.toString()
             val password = binding.txtPassword.text.toString()
